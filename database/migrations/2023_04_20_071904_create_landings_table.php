@@ -15,6 +15,7 @@ class CreateLandingsTable extends Migration
     {
         Schema::create('landings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('category_id');
             $table->string('url');
             $table->boolean('status')->default(true);

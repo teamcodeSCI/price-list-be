@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -95,12 +96,15 @@ class AuthController extends Controller
         try {
             $userId = auth('api')->user()->id;
             $user = User::find($userId);
-            if ($user === null) {
+            if ($user === null || !$user) {
                 return response()->json([
                     'status' => false,
                     'message' => 'User not found',
                 ], 400);
             }
+            $user['brand'] = Brand::find($user['brand_id']);
+            $user['brand'] = $user['brand']->name;
+
             return response()->json([
                 'status' => true,
                 'message' => 'Success',

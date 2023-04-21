@@ -25,6 +25,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::prefix('brand')->group(function () {
     Route::get('/', [BrandController::class, 'index']);
     Route::post('/create', [BrandController::class, 'store']);
+
     Route::put('/{brand}', [BrandController::class, 'update']);
     Route::delete('/{brand}', [BrandController::class, 'destroy']);
 });
