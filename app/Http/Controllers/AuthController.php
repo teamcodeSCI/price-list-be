@@ -19,7 +19,7 @@ class AuthController extends Controller
     {
         try {
             if (!Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
-                return response()->json(['error' => 'Tài khoản hoặc mật khẩu không đúng'], 401);
+                return response()->json(['status' => false, 'message' => 'Tài khoản hoặc mật khẩu không đúng'], 401);
             }
             /** @var \App\Models\User $user **/
             $user = Auth::user();
@@ -45,7 +45,7 @@ class AuthController extends Controller
                 'c_password' => 'required|same:password',
             ]);
             if ($validator->fails()) {
-                return response()->json(['error' => $validator->errors()], 401);
+                return response()->json(['status' => false, 'error' => $validator->errors()], 401);
             }
             $input = $request->all();
             $brand = Brand::find($input['brand_id']);
@@ -74,7 +74,7 @@ class AuthController extends Controller
                 'c_password' => 'required|same:password',
             ]);
             if ($validator->fails()) {
-                return response()->json(['error' => $validator->errors()], 401);
+                return response()->json(['status' => false, 'error' => $validator->errors()], 401);
             }
             $input = $request->all();
             $user = User::find($input['id']);
