@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LandingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,12 @@ Route::prefix('category')->group(function () {
     Route::post('/create', [CategoryController::class, 'store']);
     Route::put('/{category}', [CategoryController::class, 'update']);
     Route::delete('/{category}', [CategoryController::class, 'destroy']);
+});
+Route::prefix('landing')->group(function () {
+    Route::get('/', [LandingController::class, 'index']);
+    Route::post('/create', [LandingController::class, 'store']);
+    Route::put('/{landing}', [LandingController::class, 'update']);
+    Route::delete('/{landing}', [LandingController::class, 'destroy']);
 });
 Route::middleware(['auth:api'])->group(function () {
     Route::get('/user', [AuthController::class, 'getUser']);

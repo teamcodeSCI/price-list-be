@@ -10,5 +10,5 @@ class Landing extends Model
     use HasFactory;
     protected $table = 'landings';
     protected $primaryKey = 'id';
-    protected $fillable = ['category_id', 'url', 'status'];
+    protected $fillable = ['brand_id', 'category_id', 'url', 'status'];
 }

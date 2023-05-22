@@ -48,6 +48,13 @@ class AuthController extends Controller
                 return response()->json(['error' => $validator->errors()], 401);
             }
             $input = $request->all();
+            $brand = Brand::find($input['brand_id']);
+            if (!$brand) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Brand not found'
+                ], 400);
+            }
             $input['password'] = bcrypt($input['password']);
             $user = User::create($input);
             return response()->json(['status' => true, 'message' => 'Success', 'data' => $user], 200);
