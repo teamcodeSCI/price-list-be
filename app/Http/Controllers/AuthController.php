@@ -44,8 +44,8 @@ class AuthController extends Controller
                 'password' => 'required',
                 'c_password' => 'required|same:password',
             ]);
-            if ($validator->fails()) {
-                return response()->json(['status' => false, 'error' => $validator->errors()], 401);
+            if (!$validator->fails()) {
+                return response()->json(['status' => false, 'message' => $validator->errors()], 400);
             }
             $input = $request->all();
             $brand = Brand::find($input['brand_id']);
@@ -110,7 +110,8 @@ class AuthController extends Controller
                 ], 400);
             }
             $user['brand'] = Brand::find($user['brand_id']);
-            $user['brand'] = $user['brand']->name;
+            $user['brand'] = ['name' => $user['brand']->name, 'code' => $user['brand']->code];
+
 
             return response()->json([
                 'status' => true,
