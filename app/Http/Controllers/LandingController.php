@@ -25,13 +25,22 @@ class LandingController extends Controller
                 $landing = Landing::all();
                 return response()->json([
                     'status' => true,
-                    'message' => $landing
+                    'message' => 'success',
+                    'data' => $landing
                 ], 200);
             }
             $landing = Landing::where('brand_id', '=', $brandId)->get();
+            foreach ($landing as $item) {
+                $item['category'] = Category::select('category')->where('id', '=', $item['category_id'])->where('brand_id', '=', $item['brand_id'])->first();
+                $item['category'] = $item['category'];
+                if ($item['category'] === null) {
+                    $item['category'] = ['category' => ''];
+                }
+            }
             return response()->json([
                 'status' => true,
-                'message' => $landing
+                'message' => 'Success',
+                'data' => $landing
             ], 200);
         } catch (Exception $e) {
             return response()->json([

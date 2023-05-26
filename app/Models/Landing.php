@@ -11,4 +11,7 @@ class Landing extends Model
     protected $table = 'landings';
     protected $primaryKey = 'id';
     protected $fillable = ['brand_id', 'category_id', 'url', 'status'];
+    protected $casts = [
+        'status' => 'boolean',
+    ];
 }
