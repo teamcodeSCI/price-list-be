@@ -17,7 +17,7 @@ class BrandController extends Controller
     {
         //
         try {
-            $brand = Brand::all();
+            $brand = Brand::select('id', 'code', 'name')->get();
             return response()->json([
                 'status' => true,
                 'message' => 'Success',

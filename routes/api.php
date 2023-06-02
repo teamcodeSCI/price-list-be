@@ -22,6 +22,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/unauthorized', function () {
+    return response()->json([
+        'status' => false,
+        'message' => 'Unauthorized'
+    ], 401);
+})->name('unauthorized');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::prefix('brand')->group(function () {
