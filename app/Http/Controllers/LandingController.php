@@ -29,7 +29,7 @@ class LandingController extends Controller
                     'data' => $landing
                 ], 200);
             }
-            $landing = Landing::where('brand_id', '=', $brandId)->get();
+            $landing = Landing::where('brand_id', '=', $brandId)->orderBy('created_at', 'desc')->get();
             foreach ($landing as $item) {
                 $item['category'] = Category::select('category')->where('id', '=', $item['category_id'])->where('brand_id', '=', $item['brand_id'])->first();
                 $item['category'] = $item['category'];
@@ -37,6 +37,7 @@ class LandingController extends Controller
                     $item['category'] = ['category' => ''];
                 }
             }
+
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
@@ -71,14 +72,14 @@ class LandingController extends Controller
         //
         try {
             $input = $request->all();
-            $brand = Brand::find($input['brand_id']);
+            $brand = Brand::find(intval($input['brand_id']));
             if (!$brand) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Brand not found'
                 ], 400);
             }
-            $category = Category::find($input['category_id']);
+            $category = Category::find(intval($input['category_id']));
             if (!$category) {
                 return response()->json([
                     'status' => false,
@@ -93,6 +94,7 @@ class LandingController extends Controller
                 ], 400);
             }
             $landing = Landing::create($input);
+            $landing['category'] = Category::select('category')->where('id', '=', $landing['category_id'])->first();
             return response()->json([
                 'status' => true,
                 'message' => 'Success',

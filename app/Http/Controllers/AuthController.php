@@ -26,6 +26,8 @@ class AuthController extends Controller
             $createToken = $user->createToken('PriceList');
             $user['token'] = 'Bearer ' . $createToken->accessToken;
             $user['expiresAt'] = $createToken->token->expires_at;
+            $user['brand'] = Brand::find($user['brand_id']);
+            $user['brand'] = ['name' => $user['brand']->name, 'code' => $user['brand']->code];
             return response()->json(['status' => true, 'message' => 'Success', 'data' => $user], 200);
         } catch (Exception $e) {
             return response()->json([
