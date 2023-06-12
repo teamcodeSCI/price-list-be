@@ -20,49 +20,49 @@ class LandingController extends Controller
     {
         //
         try {
-        $brandId = $request->query('brand_id');
-        if ($brandId === null) {
-            $landing = Landing::all();
+            $brandId = $request->query('brand_id');
+            if ($brandId === null) {
+                $landing = Landing::all();
+                return response()->json([
+                    'status' => true,
+                    'message' => 'success',
+                    'data' => $landing
+                ], 200);
+            }
+            $landing = Landing::query();
+            $landing = $landing->where('brand_id', '=', $brandId)->orderBy('created_at', 'desc');
+            $totalItems = $landing->count();
+            if ($request->has('link')) {
+                $landing->where('url', 'like', '%' . $request->query('link') . '%');
+            }
+
+            $page = $request->query('page', 1);
+            $perPage = $request->query('perPage', 10);
+            $offset = ($page - 1) * $perPage;
+
+            $landing = $landing->offset($offset)->limit($perPage)->get();
+
+            foreach ($landing as $item) {
+                $item['category'] = Category::select('category')->where('id', '=', $item['category_id'])->where('brand_id', '=', $item['brand_id'])->first();
+                $item['category'] = $item['category'];
+                if ($item['category'] === null) {
+                    $item['category'] = ['category' => ''];
+                }
+            }
+
+            $paginationData = [
+                'current_page' => $page,
+                'per_page' => $perPage,
+                'total' => $totalItems,
+                'last_page' => ceil($totalItems / $perPage),
+            ];
+
             return response()->json([
                 'status' => true,
-                'message' => 'success',
-                'data' => $landing
+                'message' => 'Success',
+                'data' => $landing,
+                'pagination' => $paginationData,
             ], 200);
-        }
-        $landing = Landing::query();
-        $landing = $landing->where('brand_id', '=', $brandId)->orderBy('created_at', 'desc');
-        $totalItems = $landing->count();
-        if ($request->has('link')) {
-            $landing->where('url', 'like', '%' . $request->query('link') . '%');
-        }
-
-        $page = $request->query('page', 1);
-        $perPage = $request->query('perPage', 10);
-        $offset = ($page - 1) * $perPage;
-
-        $landing = $landing->offset($offset)->limit($perPage)->get();
-
-        foreach ($landing as $item) {
-            $item['category'] = Category::select('category')->where('id', '=', $item['category_id'])->where('brand_id', '=', $item['brand_id'])->first();
-            $item['category'] = $item['category'];
-            if ($item['category'] === null) {
-                $item['category'] = ['category' => ''];
-            }
-        }
-
-        $paginationData = [
-            'current_page' => $page,
-            'per_page' => $perPage,
-            'total' => $totalItems,
-            'last_page' => ceil($totalItems / $perPage),
-        ];
-
-        return response()->json([
-            'status' => true,
-            'message' => 'Success',
-            'data' => $landing,
-            'pagination' => $paginationData,
-        ], 200);
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
@@ -184,6 +184,7 @@ class LandingController extends Controller
                 ], 400);
             }
             $landing->update($input);
+            $landing['category'] = Category::select('category')->where('id', '=', $landing['category_id'])->first();
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
@@ -217,7 +218,8 @@ class LandingController extends Controller
             $landing->delete();
             return response()->json([
                 'status' => true,
-                'message' => 'Success'
+                'message' => 'Success',
+                'data' => $landing
             ], 200);
         } catch (Exception $e) {
             return response()->json([
