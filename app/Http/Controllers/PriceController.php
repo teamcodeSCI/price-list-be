@@ -119,17 +119,17 @@ class PriceController extends Controller
         //
         try {
             $input = $request->all();
-            $price = Landing::find($id);
+            $price = Price::find($id);
             if (!$price) {
                 return response()->json([
-                    'status' => true,
-                    'messsage' => 'Landing not found'
+                    'status' => false,
+                    'messsage' => 'Price not found'
                 ], 400);
             }
             $landing = Landing::find($input['landing_id']);
             if (!$landing) {
                 return response()->json([
-                    'status' => true,
+                    'status' => false,
                     'messsage' => 'Landing not found'
                 ], 400);
             }
