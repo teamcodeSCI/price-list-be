@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ExtensionController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PriceController;
 use Illuminate\Http\Request;
@@ -56,5 +57,11 @@ Route::middleware(['auth:api'])->group(function () {
         Route::post('/create', [PriceController::class, 'store']);
         Route::put('/{price}', [PriceController::class, 'update']);
         Route::delete('/{price}', [PriceController::class, 'destroy']);
+    });
+    Route::prefix('extension')->group(function () {
+        Route::get('/', [ExtensionController::class, 'index']);
+        Route::post('/create', [ExtensionController::class, 'store']);
+        Route::put('/{extension}', [ExtensionController::class, 'update']);
+        Route::delete('/{extension}', [ExtensionController::class, 'destroy']);
     });
 });
