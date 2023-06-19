@@ -15,16 +15,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/brand",
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/brand",
 							"protocol": "http",
 							"host": [
-								"127",
+								"10",
+								"195",
 								"0",
-								"0",
-								"1"
+								"171"
 							],
-							"port": "8000",
 							"path": [
+								"project",
+								"price-list-be",
+								"public",
 								"api",
 								"brand"
 							]
@@ -39,7 +41,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\":\"HH\",\r\n    \"name\":\"Hồng Hà\"\r\n}",
+							"raw": "{\r\n    \"code\":\"DA\",\r\n    \"name\":\"Đông Á\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -47,16 +49,18 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/brand/create",
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/brand/create",
 							"protocol": "http",
 							"host": [
-								"127",
+								"10",
+								"195",
 								"0",
-								"0",
-								"1"
+								"171"
 							],
-							"port": "8000",
 							"path": [
+								"project",
+								"price-list-be",
+								"public",
 								"api",
 								"brand",
 								"create"
@@ -166,7 +170,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"brand_id\":\"8\",\r\n    \"category\":\"Nâng ngực\"\r\n}",
+							"raw": "{\r\n    \"brand_id\":\"1\",\r\n    \"category\":\"Cắt mí\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -266,8 +270,34 @@
 				{
 					"name": "Register",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Đức\",\r\n    \"brand_id\":\"2\",\r\n    \"email\": \"ducpr12@gmail.com\",\r\n    \"password\": \"123456aA\",\r\n    \"c_password\": \"123456aA\"\r\n       \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/register",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"register"
+							]
+						}
 					},
 					"response": []
 				},
@@ -275,9 +305,148 @@
 					"name": "User",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzY1NmRiNDRlYWM2YzY0ZDM2MmJkYTkzZThkNWUxNjY3NGIwNzgzMTE1YTQ3MmIxYzhkNmVkMjk4MTNlODA4ODU5MDYyZDBjZTczMTQwZDEiLCJpYXQiOjE2ODQ4MjM5MjIuMTgxNTUsIm5iZiI6MTY4NDgyMzkyMi4xODE1NTEsImV4cCI6MTY4NzQxNTkyMi4xNzg0MDUsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.BRFnjmEkm0E3f7flwmwpId2hJmVhbrjW9zS0Wsqfri957BODEdvGcha2twZi3jUsUTBp2FzbLQNjzKeuLbRa3RheqgL6TmfoxuQ8cg_AR3kUgAed_NH6I6cDwSGiQrBBv9-XsWoSip0HPSENqDssztNFXvX0CUwTWyIkenRzCKQCHggb8mK8n1rZGQHqI58ydGfs8TA5QMz8ieg6yAKXMQ9ZsylNPFUVqo9lI4oDMdqOg4Iu6TJA75TFIqrGuLHyzj88bnafbWmFjoUnx1xaNO9L7bT3LbHjYTyEiokOJtZpvqcbG2lkCDneUj6uI5NXMlcoY3EIEDQjak7dZnbY6VWh6JYeOaw35EjTzR0_bWd7BOOfoiydCvYU_L-aOKfuujZKJg_27bWIysd1FKFeisJRPEHYRKyW78VkvSj5lRik9gTMZoJ_gziZUBFZUXymwuE_czlp2g4FoxXlQ1LjRm02SLIEzix8N6ksglz8JddXv_keyvPH_A3EwoLp8QlUSJxR8KFZUbeVw66lNSXnA_2rD19kJQ0FNNCR-4xHs94d1OugGd-NtNcV-r_pAZleFANuZXRO_Car9WSWu0EtXbUylv6szDYTgBb3B2AN0ri73YrVz2aZsG2DLZzk1KlTaU5HhmEA6CpTe1QpLfhrwuNc0seTGH8jxrok51aPYV8",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "127.0.0.1:8000/api/user",
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/user",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Landing",
+			"item": [
+				{
+					"name": "get landing",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/landing?brand_id=2",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"landing"
+							],
+							"query": [
+								{
+									"key": "brand_id",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "perPage",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "link",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-landing",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brand_id\":\"2\",\r\n    \"category_id\":\"1\",\r\n    \"url\":\"https://nhakhoaparis.vn/tham-my-rang-tieu-chuan-phap.html\",\r\n    \"status\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/landing/4",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"landing",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-landing",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/landing/6",
+							"protocol": "http",
 							"host": [
 								"127",
 								"0",
@@ -287,13 +456,389 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"user"
+								"landing",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create landing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"brand_id\": 1,\r\n            \"category_id\": 4,\r\n            \"url\": \"https://nhakhoaparis.vn/bang-gia-boc-rang-su-chinh-hang-2023.htmlxcb\",\r\n            \"status\": true         \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/landing/create",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"landing",
+								"create"
 							]
 						}
 					},
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Price",
+			"item": [
+				{
+					"name": "get-price",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/price?landing_id=5",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"price"
+							],
+							"query": [
+								{
+									"key": "landing_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-price",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"landing_id\": 5,\r\n            \"service\":\"Dio Hàn Quốc - Tiêu chuẩn\",\r\n            \"price\": 8000000,\r\n            \"discount\": 45,\r\n            \"promotion\":\"Tặng răng sứ Titan\",\r\n            \"note\": \"9 năm\"         \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/price/create",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"price",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-price",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"landing_id\": 4,\r\n            \"service\":\"Dio Hàn Quốc - Tiêu chuẩn\",\r\n            \"price\": 8000000,\r\n            \"discount\": 45,\r\n            \"promotion\":\"Tặng răng sứ Titan\",\r\n            \"note\": \"9 năm\"         \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/price/11",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"price",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Extension",
+			"item": [
+				{
+					"name": "create-extension",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"landing_id\":5,\r\n    \"start_date\":\"06/15/2023\",\r\n    \"end_date\":\"06/21/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/extension/create",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"extension",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-extension",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"landing_id\":5,\r\n    \"start_date\":\"06/14/2023\",\r\n    \"end_date\":\"06/20/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/extension?landing_id=5",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"extension"
+							],
+							"query": [
+								{
+									"key": "landing_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-extension",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"landing_id\":9,\r\n    \"start_date\":\"06/15/2023\",\r\n    \"end_date\":\"06/21/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/extension/10",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"extension",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-extension",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTQ3YTBmYjQwMDNlNjBiYjY2MGU1OWIzNDk1ZjZkY2QzZWJlYTNlMjU1ODY2ZDUxN2MyODdiYmNlYTM0MGE5OGEyMjY2MzdjNzgzMDY2OGEiLCJpYXQiOjE2ODYxOTY2OTkuMzIyMzk0LCJuYmYiOjE2ODYxOTY2OTkuMzIyMzk1LCJleHAiOjE2ODg3ODg2OTkuMzE2MTA1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fnqHx2vP3ZNUxz54invP1ycvycBWxVgxNuDheCL8ErsqdAf7IxePAH91-kMxW3WWbTLt3DUFy19kbC99Ezl_0pKrGjgJFc-CPLPsR1bcArMK-XLmdJ7-vn9hNJNnDk3k77thP75_iNvVoY4Us36tVx8CXkL23lYwqd9eDwXAnD-XVjtSS6d40e0TAlWayjveaGcr1Q3ZvOq0XfPxK_Hgx2acQNCiV31aK2mYmaZD7NXDIFY6fu-HNEWydwKMoMipE-43V_wasHZw4wRQ0keZhpOyrvkm5c04rkoY2OYFnESxqCTDh2o3jdamv-fIQf4Mkz4y--nDUEFY1fmgiDSXw-uIden4XRn-uDqfQttTlrqJApcpf6H5_JDnalag3ijmEzIY_Ihn8FlOsb3ifYezEW1TIDSQi1RrywzB1Xx1cxrpokGGc_yz3OV5nraZCDHsgOz6hLrC0qSeNOoW9YnX61kmTuxL01QAaJGuiu-TnpkZMR48ouwpADfJUkIMLXJ9Oa9nwrZXCKzsf3scS0PInJjyoWBshUEHvgHtBFtAn8BHOWxNSHipM8F-PwGcBmWYqtqpNfkLyImswN4OWWpYKrd1Yj5guQPuWH0lJOYQnyywOTvjSCzaXorZ2w9E1UAX3ZkyK_fRpEfGSsWzbEYqz8EyzOVFRqSkBFZuzEuwkFs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"landing_id\":9,\r\n    \"start_date\":\"06/15/2023\",\r\n    \"end_date\":\"06/21/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.195.0.171/project/price-list-be/public/api/extension/1",
+							"protocol": "http",
+							"host": [
+								"10",
+								"195",
+								"0",
+								"171"
+							],
+							"path": [
+								"project",
+								"price-list-be",
+								"public",
+								"api",
+								"extension",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get-extension",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get-price-list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://10.195.0.171/project/price-list-be/public/api/get-price-list",
+					"protocol": "http",
+					"host": [
+						"10",
+						"195",
+						"0",
+						"171"
+					],
+					"path": [
+						"project",
+						"price-list-be",
+						"public",
+						"api",
+						"get-price-list"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
