@@ -44,7 +44,7 @@ Route::prefix('category')->group(function () {
     Route::delete('/{category}', [CategoryController::class, 'destroy']);
 });
 
-Route::get('/get-extension', [ExtensionController::class, 'index']);
+Route::get('/get-extension', [ExtensionController::class, 'create']);
 Route::get('/get-price-list', [PriceController::class, 'index']);
 
 Route::middleware(['auth:api'])->group(function () {

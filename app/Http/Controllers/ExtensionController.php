@@ -55,9 +55,39 @@ class ExtensionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        try {
+            $landingId = $request->query('landing_id');
+            if ($landingId === null) {
+                $extension = Extension::all();
+                return response()->json([
+                    'status' => true,
+                    'message' => 'success',
+                    'data' => $extension
+                ], 200);
+            }
+            $landing = Landing::find($landingId);
+            if (!$landing) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Landing not found',
+                ], 400);
+            }
+            $extension = Extension::query();
+            $extension = $extension->where('landing_id', '=', $landingId)->get();
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $extension,
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 
     /**
