@@ -36,7 +36,7 @@ class ExtensionController extends Controller
                 ], 400);
             }
             $extension = Extension::query();
-            $extension = $extension->where('landing_id', '=', $landingId)->get();
+            $extension = $extension->where('landing_id', '=', $landingId)->orderBy('created_at', 'desc')->get();
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
