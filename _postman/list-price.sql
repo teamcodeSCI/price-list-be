@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 13, 2023 lúc 09:42 AM
+-- Thời gian đã tạo: Th6 19, 2023 lúc 09:21 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -41,7 +41,9 @@ CREATE TABLE `brands` (
 
 INSERT INTO `brands` (`id`, `code`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'HH', 'Hồng Hà', '2023-05-19 08:13:55', '2023-05-19 08:13:55'),
-(2, 'PR', 'Paris', '2023-05-19 08:14:04', '2023-05-19 08:14:04');
+(2, 'PR', 'Paris', '2023-05-19 08:14:04', '2023-05-19 08:14:04'),
+(3, 'KN', 'Kangnam', '2023-06-14 08:27:51', '2023-06-14 08:27:51'),
+(4, 'DA', 'Đông Á', '2023-06-14 08:28:02', '2023-06-14 08:28:02');
 
 -- --------------------------------------------------------
 
@@ -57,17 +59,20 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Đang đổ dữ liệu cho bảng `categories`
+-- Cấu trúc bảng cho bảng `extensions`
 --
 
-INSERT INTO `categories` (`id`, `brand_id`, `category`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Nâng ngực', '2023-05-19 08:14:47', '2023-05-19 08:14:47'),
-(2, 2, 'Niềng răng', '2023-05-22 02:53:19', '2023-05-22 02:53:19'),
-(3, 2, 'Trồng răng', '2023-05-22 02:53:26', '2023-05-22 02:53:26'),
-(4, 2, 'Bọc răng sứ', '2023-05-22 02:53:34', '2023-05-22 02:53:34'),
-(5, 1, 'Nâng mũi', '2023-05-22 02:53:56', '2023-05-22 02:53:56'),
-(6, 1, 'Cắt mí', '2023-05-22 02:54:12', '2023-05-22 02:54:12');
+CREATE TABLE `extensions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `landing_id` bigint(20) UNSIGNED NOT NULL,
+  `start_date` varchar(255) NOT NULL,
+  `end_date` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -101,16 +106,6 @@ CREATE TABLE `landings` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `landings`
---
-
-INSERT INTO `landings` (`id`, `brand_id`, `category_id`, `url`, `status`, `created_at`, `updated_at`) VALUES
-(4, 2, 3, 'https://nhakhoaparis.vn/tham-my-rang-tieu-chuan-phap.html', 1, '2023-05-22 02:18:39', '2023-06-12 08:01:15'),
-(5, 2, 3, 'https://nhakhoaparis.vn/mat-rang-vinh-vien-thi-phai-lam-sao.html', 1, '2023-05-22 02:55:01', '2023-05-22 02:55:01'),
-(7, 2, 4, 'https://nhakhoaparis.vn/bang-gia-boc-rang-su-chinh-hang-2023.html', 1, '2023-05-22 02:59:53', '2023-05-22 02:59:53'),
-(8, 2, 2, 'https://nhakhoaparis.vn/chinh-nha-nieng-rang-3d-speed-invisalign-trong-suot.html', 1, '2023-05-25 07:45:41', '2023-05-25 07:45:41');
-
 -- --------------------------------------------------------
 
 --
@@ -140,7 +135,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2023_04_20_065259_create_brands_table', 1),
 (11, '2023_04_20_071550_create_categories_table', 1),
 (12, '2023_04_20_071904_create_landings_table', 1),
-(13, '2023_04_20_072428_create_prices_table', 1);
+(13, '2023_04_20_072428_create_prices_table', 1),
+(14, '2023_06_14_132534_create_extensions_table', 2);
 
 -- --------------------------------------------------------
 
@@ -167,8 +163,10 @@ CREATE TABLE `oauth_access_tokens` (
 INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
 ('02591f724099864e5d8953042127dc38508c41cf81d7522e73b36187b28bdac3f68a24e995a76818', 1, 1, 'PriceList', '[]', 0, '2023-05-23 06:35:18', '2023-05-23 06:35:18', '2023-06-22 13:35:18'),
 ('02d2333bf04fb71cbeac5ccd03da9b134acdecb65ebc6a01353c5f46f07022ea2dfb0132fe4d50bf', 1, 1, 'PriceList', '[]', 0, '2023-05-23 06:22:39', '2023-05-23 06:22:39', '2023-06-22 13:22:39'),
+('091d0ed06afa7c53e989287f08fe56b076a3e0b16885cf278cd6d2c83a2fb477ea2f027f982c995f', 4, 1, 'PriceList', '[]', 0, '2023-06-13 08:12:52', '2023-06-13 08:12:52', '2023-07-13 15:12:52'),
 ('0be99f27270aac1695846eeb622a25e8fea8c046d64dedb76527b5aaadf9ce9dde45160c09328634', 1, 1, 'PriceList', '[]', 0, '2023-06-08 02:32:19', '2023-06-08 02:32:19', '2023-07-08 09:32:19'),
 ('0d2e8e57251ab6a18717aef5085ab27c754e44dfe7db2ebf7e771e795bcb81aae2a73e3d6eb1c080', 4, 1, 'PriceList', '[]', 0, '2023-05-25 08:43:52', '2023-05-25 08:43:52', '2023-06-24 15:43:52'),
+('0d6837534c794f4c7d9ff70805ffb79cee9bd341cf63291711d7275ae57337717433892c12b9c657', 77, 1, 'PriceList', '[]', 0, '2023-06-16 01:17:13', '2023-06-16 01:17:13', '2023-07-16 08:17:13'),
 ('0d80a773d89454857b86909ce743990cb37e80fdc3546fcb016ae565ad119bb234a98e5737747e7e', 1, 1, 'PriceList', '[]', 0, '2023-06-08 02:37:56', '2023-06-08 02:37:56', '2023-07-08 09:37:56'),
 ('10e1e7db944ff8db83f64bb40a9732e26994650172d66584fb63710cd6af46c38575dd2e6115e004', 3, 1, 'PriceList', '[]', 0, '2023-05-19 08:18:59', '2023-05-19 08:18:59', '2023-06-18 15:18:59'),
 ('2267fdc72970049e3760a88ed48db3dbdcbdca7d4487b7585927d6c70231edf9e006d411c1529a7f', 4, 1, 'PriceList', '[]', 0, '2023-06-13 06:20:25', '2023-06-13 06:20:25', '2023-07-13 13:20:25'),
@@ -176,14 +174,19 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('2dff4f93a6d5bf3270facd99f00047a346f062e962000981383719bf1d21a5315dd193bfd3ae837e', 1, 1, 'PriceList', '[]', 0, '2023-06-08 03:34:01', '2023-06-08 03:34:01', '2023-07-08 10:34:01'),
 ('3352079643c91c63cb8aac6f43156462b19e0c3a9f137f087ec25cb6a55e648b713e62c3c5707672', 1, 1, 'PriceList', '[]', 0, '2023-06-02 06:27:26', '2023-06-02 06:27:26', '2023-07-02 13:27:26'),
 ('374c5c6c2076cd98c7eb9d181741182a7f92888fc912eafc600955686294a6a510606e7d425aa51d', 1, 1, 'PriceList', '[]', 0, '2023-06-08 03:01:24', '2023-06-08 03:01:24', '2023-07-08 10:01:24'),
+('3b89135041540c9d99cb789c25350ec1ae22f09f4f7814d3d980966b7f8566e077f7173db8319d0b', 77, 1, 'PriceList', '[]', 0, '2023-06-16 01:21:51', '2023-06-16 01:21:51', '2023-07-16 08:21:51'),
 ('3be99ff77de4154fcab50e61145bcd73db991eb06fcb8301aa74ef886ad4b5d0e1715f9b4e61cce1', 1, 1, 'PriceList', '[]', 0, '2023-06-02 01:37:39', '2023-06-02 01:37:39', '2023-07-02 08:37:39'),
+('3d55296008da172203a186a3edf127f241b13f0949a1249288df36ae9974e8314704ec2575e22da9', 77, 1, 'PriceList', '[]', 0, '2023-06-16 01:21:02', '2023-06-16 01:21:02', '2023-07-16 08:21:02'),
 ('3d6cde3da7841bcb004b75c1b1c4a8254780004c65d8e8c214802318fc55286677c51fc3e357b3c1', 1, 1, 'PriceList', '[]', 0, '2023-06-08 02:52:24', '2023-06-08 02:52:24', '2023-07-08 09:52:24'),
 ('3e4a89c35abdfb3f6f1bb17ed6c0ca8ea535b6425f6d37655d75e03f012f19cb136d95b50de27682', 4, 1, 'PriceList', '[]', 0, '2023-05-23 08:25:25', '2023-05-23 08:25:25', '2023-06-22 15:25:25'),
 ('4eed7fbc173631416e039fa609253cf786ab0f99b9b16efbf44efe577202dbc4fd31b96d37063d36', 1, 1, 'PriceList', '[]', 0, '2023-05-23 04:42:27', '2023-05-23 04:42:27', '2023-06-22 11:42:27'),
 ('5202f0c1b8b26b618e6902b90a6ce11cc9b50827594a2aff51f372fe4fa6bebd1157a49ea5d07b24', 4, 1, 'PriceList', '[]', 0, '2023-05-24 01:46:21', '2023-05-24 01:46:21', '2023-06-23 08:46:21'),
+('53e12b667b6ca90eaeaf4fe9966230754256b524a58dde81c30a8fc2acf246542283249b1a8e5e3a', 4, 1, 'PriceList', '[]', 0, '2023-06-16 01:23:14', '2023-06-16 01:23:14', '2023-07-16 08:23:14'),
+('55f9ea670e0e15bea23124fca10946e2432a712bb517b691a34c37560f6ca551dad75a0d58abff10', 39, 1, 'PriceList', '[]', 0, '2023-06-16 01:18:56', '2023-06-16 01:18:56', '2023-07-16 08:18:56'),
 ('573930fd6773a3ef05abffacdf52ffeb2f04852e178efd3caf2f024941bb9917b9f7469a56524365', 1, 1, 'PriceList', '[]', 0, '2023-05-23 08:25:15', '2023-05-23 08:25:15', '2023-06-22 15:25:15'),
 ('58f40c3d68a74eb23fa36294bc14285d07f9ba07275fa6da560a8c7488d436e05e0cfb0c5554b3ea', 1, 1, 'PriceList', '[]', 0, '2023-05-22 06:17:29', '2023-05-22 06:17:29', '2023-06-21 13:17:29'),
 ('597d49dd6ac2f443ad7be0454c5088be4a4a7d6705f1fc870ef807fe66d5a9945eba5bd2593738ce', 1, 1, 'PriceList', '[]', 0, '2023-06-02 07:02:00', '2023-06-02 07:02:00', '2023-07-02 14:02:00'),
+('5bfcf14ca9629f439e9f9e9a7fcd2134529c93fb7ede9a81e78492a092ffef71f5074b6f6baf36f5', 40, 1, 'PriceList', '[]', 0, '2023-06-16 01:19:14', '2023-06-16 01:19:14', '2023-07-16 08:19:14'),
 ('70345532db5c67a9e6d729461ddc805339921f987d03112f530001b5af91f5ce3bae8f2936035aa8', 1, 1, 'PriceList', '[]', 0, '2023-06-08 02:26:13', '2023-06-08 02:26:13', '2023-07-08 09:26:13'),
 ('714912fe77ba754460bc6a14bcfd9e9186c282e46435d0107afb2590ad02de3e68c71d693dbcbc34', 1, 1, 'PriceList', '[]', 0, '2023-05-23 06:33:37', '2023-05-23 06:33:37', '2023-06-22 13:33:37'),
 ('7321ec878d62649ac4f573e58fbe4f6eea7bcba38dff8908c4c17ddc5086eea22d6673b60922ddb7', 1, 1, 'PriceList', '[]', 0, '2023-06-08 01:45:03', '2023-06-08 01:45:03', '2023-07-08 08:45:03'),
@@ -195,6 +198,7 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('a47a0fb4003e60bb660e59b3495f6dcd3ebea3e255866d517c287bbcea340a98a226637c7830668a', 4, 1, 'PriceList', '[]', 0, '2023-06-08 03:58:19', '2023-06-08 03:58:19', '2023-07-08 10:58:19'),
 ('a68ca0cac5171b6537504f4be85f4e569501676f9fc57ed215ef69dd082a916efa252daf896f9104', 1, 1, 'PriceList', '[]', 0, '2023-06-02 03:56:13', '2023-06-02 03:56:13', '2023-07-02 10:56:13'),
 ('aced66352375e0b42e0530c0860b46f51e3a56db15005b2ded4def39328e75409a2ae934b565d01d', 4, 1, 'PriceList', '[]', 0, '2023-06-02 01:37:55', '2023-06-02 01:37:55', '2023-07-02 08:37:55'),
+('bbc1b65b9ded56818fc64a3c458a14d5d60c5cfd2560afe8e32a8a819510a215a158adc8ba9c23d8', 4, 1, 'PriceList', '[]', 0, '2023-06-19 06:51:59', '2023-06-19 06:51:59', '2023-07-19 13:51:59'),
 ('bea51f8a5850afa287db71f59783fcaab2ab37d49e672d14399b1ef5116d3870958cd5bd23bba1d7', 1, 1, 'PriceList', '[]', 0, '2023-05-23 06:36:00', '2023-05-23 06:36:00', '2023-06-22 13:36:00'),
 ('bea89555a81cdd1245580cdfeb835d3622b25b47748525cb96bb0c0b2cad2018a24d5cdcba2aa035', 1, 1, 'PriceList', '[]', 0, '2023-06-08 03:47:43', '2023-06-08 03:47:43', '2023-07-08 10:47:43'),
 ('c71e85e1d69b56f92cc1515e8b6de77c2b6d2a8a389d81e8097572fd6cb7191c37d0295df8b7c45d', 1, 1, 'PriceList', '[]', 0, '2023-05-23 04:42:27', '2023-05-23 04:42:27', '2023-06-22 11:42:27'),
@@ -334,24 +338,6 @@ CREATE TABLE `prices` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `prices`
---
-
-INSERT INTO `prices` (`id`, `landing_id`, `service`, `price`, `discount`, `promotion`, `note`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Dio Hàn Quốc - Tiêu chuẩn', '8000000', '45', 'Tặng răng sứ Titan', '7 năm', '2023-06-12 09:04:48', '2023-06-12 09:04:48'),
-(2, 5, 'Dio Hàn Quốc - Tiêu chuẩn', '8000000', '45', 'Tặng răng sứ Titan', '7 năm', '2023-06-12 09:05:48', '2023-06-12 09:05:48'),
-(3, 5, 'Dio Hàn Quốc - Tiêu chuẩn', '8000000', '45', 'Tặng răng sứ Titan', '7 năm', '2023-06-12 09:05:49', '2023-06-12 09:05:49'),
-(4, 5, 'Dio Hàn Quốc - Tiêu chuẩn', '8000000', '45', 'Tặng răng sứ Titan', '7 năm', '2023-06-12 09:05:50', '2023-06-12 09:05:50'),
-(5, 5, 'Dio Hàn Quốc - Tiêu chuẩn', '8000000', '45', 'Tặng răng sứ Titan', '9 năm', '2023-06-12 09:08:30', '2023-06-12 09:08:30'),
-(6, 5, 'Dio Hàn Quốc - Cao cấp', '1000000', '30', 'Tặng răng sứ', '1', '2023-06-12 09:55:25', '2023-06-12 09:55:25'),
-(7, 5, 'Dio Hàn Quốc - Cao cấp', '1000000', '30', 'Tặng răng sứ', NULL, '2023-06-12 09:55:40', '2023-06-12 09:55:40'),
-(8, 5, 'Dio Hàn Quốc - Cao cấp', '1000000', '30', 'Tặng răng sứ', NULL, '2023-06-12 09:56:26', '2023-06-12 09:56:26'),
-(9, 5, 'Dio Hàn Quốc - Cao cấp', '1000000', '30', 'Tặng răng sứ', NULL, '2023-06-12 09:57:34', '2023-06-12 09:57:34'),
-(10, 5, 'Dio Hàn Quốc - Cao cấp', '1000000', '90', 'Tặng răng sứ Titan', 'c', '2023-06-12 09:58:49', '2023-06-12 09:58:49'),
-(11, 4, 'Dio Hàn Quốc - Tiêu chuẩn', '8000000', '45', 'Tặng răng sứ Titan', '9 nămx', '2023-06-13 06:22:44', '2023-06-13 07:34:33'),
-(12, 4, 'test2', '5000000', '10', 'không có', 'sadacxzcvbx', '2023-06-13 06:23:18', '2023-06-13 07:31:58');
-
 -- --------------------------------------------------------
 
 --
@@ -371,19 +357,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
---
-
-INSERT INTO `users` (`id`, `brand_id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Đức', 'duc@gmail.com', NULL, '$2y$10$M/mrGlmqdTvKxWq0AAMejubSpKm5h9YEmSiODTbhNQ9d2MQ.Seo0.', NULL, '2023-05-19 08:09:17', '2023-05-19 08:09:17'),
-(3, 1, 'Đức', 'duc2@gmail.com', NULL, '$2y$10$73JmldI9Y7WMUPEfWT0fZuPGTapkbJXTEmJXVfIUrpkOarm8YaCFW', NULL, '2023-05-19 08:14:17', '2023-05-19 08:14:17'),
-(4, 2, 'Đức', 'ducpr@gmail.com', NULL, '$2y$10$vuTBEwMBBKtY7KKXK1CX8ux9veWHj7nZZyswlHZlpE7TJrMOQdyb2', NULL, '2023-05-22 06:29:12', '2023-05-22 06:29:12'),
-(7, 2, 'Đức', 'ducpr1@gmail.com', NULL, '$2y$10$kHNbBcJDEXX2DQc0aBDhz.aoUeMaKPJhrxQb6gCFeRtvPbZgN4fzm', NULL, '2023-05-22 07:45:28', '2023-05-22 07:45:28'),
-(8, 1, 'Nam', 'nam@gmail.com', NULL, '$2y$10$YA69.7lpsqNWT2tcFGU3b.dlN/cVgmF2F9BYimFfeUrWKHElbDOm.', NULL, '2023-05-22 07:48:20', '2023-05-22 07:48:20'),
-(33, 1, 'Đức', 'duchh@gmail.com', NULL, '$2y$10$AYJFS0OT642Pvx/6RlYxmeTpeIwDbkUNtNi2qyN01GVfm2NrdYcFK', NULL, '2023-06-02 03:36:48', '2023-06-02 03:36:48'),
-(37, 1, 'duc', 'duch@gmail.com', NULL, '$2y$10$q5KQPvjZs1tiidSuMe.dNOCYTeWe8Wf5r6aRPWGTv.LqxWCW7izmS', NULL, '2023-06-02 03:38:52', '2023-06-02 03:38:52');
-
---
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -397,6 +370,12 @@ ALTER TABLE `brands`
 -- Chỉ mục cho bảng `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `extensions`
+--
+ALTER TABLE `extensions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -487,13 +466,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `extensions`
+--
+ALTER TABLE `extensions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -511,7 +496,7 @@ ALTER TABLE `landings`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `oauth_clients`
@@ -535,13 +520,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `prices`
 --
 ALTER TABLE `prices`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
