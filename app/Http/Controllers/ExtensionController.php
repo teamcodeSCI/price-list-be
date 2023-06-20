@@ -107,14 +107,14 @@ class ExtensionController extends Controller
                     'message' => 'landing not found'
                 ], 400);
             }
-            $extension = Extension::where('start_date', '=', $input['start_date'])->get();
+            $extension = Extension::where('start_date', '=', $input['start_date'])->where('landing_id', '=', $input['landing_id'])->get();
             if (count($extension) !== 0) {
                 return response()->json([
                     'status' => false,
                     'message' => 'extension already exist'
                 ], 400);
             }
-            $extension = Extension::where('end_date', '=', $input['end_date'])->get();
+            $extension = Extension::where('end_date', '=', $input['end_date'])->where('landing_id', '=', $input['landing_id'])->get();
             if (count($extension) !== 0) {
                 return response()->json([
                     'status' => false,
