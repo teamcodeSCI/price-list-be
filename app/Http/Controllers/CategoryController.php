@@ -21,7 +21,7 @@ class CategoryController extends Controller
             $brandId = $request->query('brand_id');
             $categories = Category::all();
             if ($brandId) {
-                $categories = Category::where('brand_id', '=', $brandId)->get();
+                $categories = Category::where('brand_id', '=', $brandId)->orderBy('created_at', 'desc')->get();
             }
             return response()->json([
                 'status' => true,
@@ -170,6 +170,7 @@ class CategoryController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
+                'data' => $category
             ], 200);
         } catch (Exception $e) {
             return response()->json([
