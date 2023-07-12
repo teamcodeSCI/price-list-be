@@ -47,10 +47,30 @@ class PriceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-
+        try {
+            $landingId = $request->query('landing_id');
+            if ($landingId === null) {
+                $price = Price::all();
+                return response()->json([
+                    'status' => true,
+                    'messsage' => 'Success',
+                    'data' => $price
+                ], 200);
+            }
+            $price = Price::where('landing_id', '=', $landingId)->orderBy('created_at', 'desc')->get();
+            return response()->json([
+                'status' => true,
+                'messsage' => 'Success',
+                'data' => $price
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'messsage' => $e
+            ], 500);
+        }
     }
 
     /**

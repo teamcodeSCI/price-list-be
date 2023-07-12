@@ -45,7 +45,8 @@ Route::prefix('category')->group(function () {
 });
 
 Route::get('/get-extension', [ExtensionController::class, 'create']);
-Route::get('/get-price-list', [PriceController::class, 'index']);
+Route::get('/get-price-list', [PriceController::class, 'create']);
+
 
 Route::middleware(['auth:api'])->group(function () {
     Route::get('/user', [AuthController::class, 'getUser']);
