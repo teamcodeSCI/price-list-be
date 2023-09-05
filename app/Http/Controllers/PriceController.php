@@ -59,11 +59,18 @@ class PriceController extends Controller
                     'data' => $price
                 ], 200);
             }
+            $landing = Landing::find($landingId);
+            if (!$landing) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Landing not found',
+                ], 400);
+            }
             $price = Price::where('landing_id', '=', $landingId)->orderBy('created_at', 'desc')->get();
             return response()->json([
                 'status' => true,
                 'messsage' => 'Success',
-                'data' => $price
+                'data' => ['isActive' => $landing->status, 'price' => $price]
             ], 200);
         } catch (Exception $e) {
             return response()->json([

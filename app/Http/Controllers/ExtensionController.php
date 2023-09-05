@@ -75,12 +75,14 @@ class ExtensionController extends Controller
                     'message' => 'Landing not found',
                 ], 400);
             }
+
             $extension = Extension::query();
+
             $extension = $extension->where('landing_id', '=', $landingId)->get();
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
-                'data' => $extension,
+                'data' => ['isActive' => $landing->status, 'extention' => $extension]
             ], 200);
         } catch (Exception $e) {
             return response()->json([
